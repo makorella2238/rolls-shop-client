@@ -1,0 +1,85 @@
+.Modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.ModalContent {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.ModalHeader {
+    color: #fff;
+}
+
+.titleWithClass {
+    text-align: center;
+}
+
+.title {
+    max-width: 400px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.ModalBody {
+    color: #ddd;
+}
+
+.CloseButton {
+    height: 48px;
+    width: 68px;
+    border-radius: 30px;
+
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(66,118,196,.3);
+
+    margin-top: 10px;
+    float: right;
+    transition: all 0.3s ease-in-out;
+}
+
+.CloseButton:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.CloseButton:active {
+    transform: scale(0.9);
+}
+
+.CloseButton:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.4);
+}
+
+.success_img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+.failedContainer {
+    text-align: center;
+}
+
+.failed_update {
+    margin-top: 20px;
+    max-width: 300px;
+    height: auto;
+}

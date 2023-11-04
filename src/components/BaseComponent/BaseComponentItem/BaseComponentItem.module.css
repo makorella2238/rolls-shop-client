@@ -1,0 +1,232 @@
+.item {
+    position: relative;
+    height: 460px;
+    max-width: 24%;
+    min-width: 24%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    /*background: #2F4858;*/
+    background: linear-gradient(to bottom, rgb(47 72 88), #005894, #fff);
+    box-shadow: 3px 3px 1px 1px rgb(204 204 204);
+    text-align: center;
+
+    padding: 15px;
+    margin: 5px;
+
+}
+
+.img {
+    height: 200px;
+    width: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.img:hover {
+    transform: scale(1.1);
+}
+
+.title {
+    font-size: 22px;
+    font-weight: bold;
+
+    margin-top: 10px;
+}
+
+.weight {
+    font-size: 14px;
+    color: #000;
+    margin-top: 5px;
+}
+
+.descriptionContainer {
+    width: 100%;
+    overflow: hidden;
+}
+
+.description {
+    margin: 10px 0;
+    padding: 0 5px;
+    font-size: 18px;
+
+    max-height: 40px;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.1);
+}
+
+.button:active {
+    transform: scale(0.9);
+}
+
+.selectedButton {
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.selectedButton:hover {
+    background-color: #0056b3;
+}
+
+.aboutBy {
+    width: 100%;
+
+    position: absolute;
+    bottom: 0;
+    padding: 0 10px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    color: rgba(0, 62, 109, 0.8);
+}
+
+.getButton {
+    height: 48px;
+    width: 68px;
+    border-radius: 40px;
+
+    border: none;
+    /*background-color: #007bff;*/
+    /*background: linear-gradient(to bottom, #003e6d, #005894, #fff);*/
+    background: linear-gradient(to bottom,
+    rgba(0, 62, 109, 0.8),
+    rgba(255, 255, 255, 0.2));
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0 8px 20px rgba(66,118,196,.3);*/
+
+    margin-top: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.getButton:hover {
+    /*background-color: #0056b3;*/
+    background: linear-gradient(to bottom,
+    rgb(0, 62, 109),
+    rgb(255, 255, 255));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+.getButton:active {
+    transform: scale(0.9);
+    opacity: .8;
+}
+
+.getButton:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.4);
+}
+
+.countButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.tasteButtons {
+    display: flex;
+    gap: 20px;
+}
+
+.favorite {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+}
+
+.favorite svg {
+    transition: fill .3s ease-out;
+}
+
+.favorite:hover svg {
+    fill: #e76f51;
+}
+
+.cart {
+    height: 25px;
+    width: 25px;
+}
+
+/* ---------------------    InCart    ---------------------------------*/
+
+.inCartDetails {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    cursor: pointer;
+}
+
+.backImg {
+    scale: 0.9;
+    transition: scale .6s ease-in-out;
+}
+.backImg:hover {
+    scale: 1.2;
+}
+
+
+.imgInCart {
+    margin-top: 30px;
+
+    border-radius: 50%;
+    height: 200px;
+    width: auto;
+    object-fit: cover;
+
+    margin-bottom: 5px;
+}
+
+/* ---------------------    ./InCart    ---------------------------------*/
+
+@media (max-width: 1200px) {
+    .item {
+        max-width: 32%;
+    }
+}
+@media (max-width: 750px) {
+    .item {
+        max-width: 48%;
+        min-width: 48%;
+    }
+}
+@media (max-width: 560px) {
+    .item {
+        max-width: 100%;
+    }
+}

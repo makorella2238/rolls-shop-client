@@ -1,0 +1,44 @@
+export interface IMenu {
+    _id?: string
+    img: string
+    title: string
+}
+
+export interface IMenuElement {
+    category: string
+    items: IMenuItem[]
+}
+
+export interface ICartItem {
+    _id: string
+    oldId: string
+    img: string
+    title: string
+    price: number
+    weight: string
+    quantity: number
+    details?: any
+    category: string
+}
+
+export interface IMenuItem {
+    oldId?: string
+    _id: string
+    img: string
+    title: string
+    weight: string
+    isFavorite: boolean
+    category: string
+    description: string
+    count?: [number]
+    taste?: [string]
+    price: any
+    prices?: IPrice
+    priceDrinks?: [number]
+}
+
+interface IPrice {
+    "4"?: number
+    "6"?: number
+    "8"?: number
+}

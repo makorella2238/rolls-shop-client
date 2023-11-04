@@ -1,0 +1,86 @@
+.form {
+    text-align: center;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+input {
+    display: inline-block;
+    margin: 10px 0;
+
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    color: #1a1a1a;
+}
+
+input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.errorInput {
+    border: 2px solid red;
+    border-radius: 10px;
+}
+
+.error {
+    color: red;
+    font-size: 16px;
+}
+
+.input {
+    margin: 10px 0;
+}
+
+.button {
+    border-radius: 30px;
+    padding: 15px 25px;
+
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(66,118,196,.3);
+
+    margin: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.button:active {
+    transform: scale(0.9);
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.4);
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.registration {
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.linkLogin {
+}
+
+.handleLogout {
+    cursor: pointer;
+}

@@ -1,0 +1,147 @@
+.profile {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #555;
+    border-radius: 5px;
+}
+
+.heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.profileFormHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.deleteProfile {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s;
+    font-weight: 500;
+    color: red;
+}
+
+.deleteProfile::before,
+.deleteProfile::after {
+    content: '';
+    height: 1px;
+    width: 0;
+    background: currentColor;
+    transition: width 0.3s;
+}
+
+.deleteProfile::before {
+    margin-right: 0.5em;
+}
+
+.deleteProfile::after {
+    margin-left: 0.5em;
+}
+
+.deleteProfile:hover {
+    border-color: currentColor;
+}
+
+.deleteProfile:hover::before,
+.deleteProfile:hover::after {
+    width: 50%;
+}
+
+.subheading {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.label {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.button {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.historyOrder {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f2f2f2;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative
+}
+
+.historyOrder::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.historyOrder:hover::before {
+    opacity: 1;
+}
+
+.historyOrder:hover {
+    background-color: #e0e0e0;
+}
+
+.historyOrder h2 {
+    margin-bottom: 0;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.errorInput {
+    border: 2px solid #ca4848;
+    border-radius: 10px;
+}
+
+.error {
+    color: red;
+    font-size: 16px;
+    margin-top: 5px;
+}
