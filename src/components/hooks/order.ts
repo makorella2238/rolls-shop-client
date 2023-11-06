@@ -1,6 +1,7 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import {order_request} from "../API/api.ts";
 import {ICartItem} from "../../../types.ts";
+import {useDeleteAllCartItems} from "./cart.ts";
 
 export const useGetOrderItems = () => {
     return useQuery<IOrder[]>('getOrderItems', order_request.getOrder)
@@ -27,14 +28,14 @@ export interface IOrder {
 
 export const useCreateOrderItems = (setCreateOrderLoading: React.Dispatch<React.SetStateAction<boolean>>, setSuccessCreateOrder: React.Dispatch<React.SetStateAction<boolean>>) => {
     const queryClient = useQueryClient();
+    const {handleDeleteAll} = useDeleteAllCartItems()
 
     const createOrderItems = useMutation(order_request.createOrder, {
         onSuccess: () => {
             queryClient.invalidateQueries('getOrderItems')
             setCreateOrderLoading(false)
             setSuccessCreateOrder(true)
-            // сделать обнуление корзины
-            debugger
+            handleDeleteAll()
         },
     });
 

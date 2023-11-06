@@ -94,7 +94,7 @@ export const useDeleteCartItem = (setDeleteLoading?: React.Dispatch<React.SetSta
 };
 
 
-export const useDeleteAllCartItems = (setDeleteAllError: React.Dispatch<React.SetStateAction<string>>) => {
+export const useDeleteAllCartItems = (setDeleteAllError?: React.Dispatch<React.SetStateAction<string>>) => {
     const queryClient = useQueryClient();
 
     const deleteAll = useMutation(cart_requests.deleteAll, {
@@ -103,6 +103,7 @@ export const useDeleteAllCartItems = (setDeleteAllError: React.Dispatch<React.Se
             queryClient.invalidateQueries('getTotalCartPrice');
         },
         onError: (error) => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             setDeleteAllError(error.response.data.message);
         },
