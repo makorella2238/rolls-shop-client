@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 
 const queryClient = new QueryClient()
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
