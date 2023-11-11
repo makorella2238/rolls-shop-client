@@ -1,6 +1,7 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import {favorite_request} from "../API/api.ts";
 import {IMenuItem} from "../../../types.ts";
+import React from "react";
 
 export const useGetFavoriteItems = (setFavoriteItems?: React.Dispatch<React.SetStateAction<IMenuItem[]>>) => {
     return useQuery('getFavoritesItems', favorite_request.getFavoritesItems, {

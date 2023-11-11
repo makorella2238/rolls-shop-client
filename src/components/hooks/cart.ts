@@ -1,5 +1,6 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import {cart_requests} from "../API/api.ts";
+import React from "react";
 
 export const useGetTotalCartPrice = (setUsername: React.Dispatch<React.SetStateAction<string>>, setIsAuthFalse: {
     (): void;

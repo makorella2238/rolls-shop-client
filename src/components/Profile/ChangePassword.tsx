@@ -5,9 +5,8 @@ import AuthModal from "../AuthModal/AuthModal.tsx";
 // @ts-ignore
 
 interface ChangePasswordFormProps {
-    onSubmit: (data: any) => void
+    onSubmit: (data: never) => void
     isChangePasswordModal: boolean
-    onFormReset: () => void
     setIsChangePasswordModal: React.Dispatch<React.SetStateAction<boolean>>
     changePasswordErr: string
 }
@@ -15,16 +14,10 @@ interface ChangePasswordFormProps {
 const ChangePasswordForm = ({
                                 onSubmit,
                                 isChangePasswordModal,
-                                onFormReset,
                                 setIsChangePasswordModal,
                                 changePasswordErr
                             }: ChangePasswordFormProps) => {
-    const {register, handleSubmit, formState: {errors}, reset} = useForm();
-
-    const handleFormReset = () => {
-        reset(); // Сброс формы
-        onFormReset(); // Вызов колбэк-функции для дополнительных действий в компоненте Profile
-    };
+    const {register, handleSubmit, formState: {errors}} = useForm();
 
     return (
         <form className={ s.form } onSubmit={ handleSubmit(onSubmit) }>

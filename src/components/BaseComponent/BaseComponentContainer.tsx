@@ -39,12 +39,8 @@ const BaseComponentAPIContainer = ({isAuth}: BaseComponentAPIContainerProps) => 
     }
 
     if (menuItemsError || favoriteItemsError) {
-        return (
-            <>
-                { menuItemsError && <p>{ menuItemsError }</p> }
-                { favoriteItemsError && <p>{ favoriteItemsError }</p> }
-            </>
-        );
+        // @ts-ignore
+        return <p>{menuItemsError || favoriteItemsError}</p>
     }
 
     // @ts-ignore

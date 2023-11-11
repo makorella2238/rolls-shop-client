@@ -10,6 +10,7 @@ import {IMenuElement, IMenuItem} from '../../../types';
 
 import MenuElements from './MenuElements';
 import {useInView} from 'react-intersection-observer';
+import Preloader from '../common/Preloader/Preloader';
 interface MenuElementsContainerProps {
     isAuth: boolean;
 }
@@ -28,14 +29,20 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
 
     const {data: menuItemsData, isFetching: menuElementsIsFetching, error: menuElementsError} =
         useGetMenuElements(categoryId);
+    // @ts-ignore
     let favoriteFetching = false;
     let favoriteError = null;
 
     if (isAuth) {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         const { isFetching, error } = useGetFavoriteItems(setFavoriteItems);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         favoriteFetching = isFetching;
         favoriteError = error;
+    }
 
+    if(menuElementsIsFetching) {
+        return <Preloader/>
     }
 
     useEffect(() => {
@@ -50,19 +57,14 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
                 loadNextCategory();
             }
         }
-    }, [inView, menuElementsData]);
+    }, [inView, menuElementsData, categoryId]);
 
     const loadNextCategory = () => {
         setCategoryId(prev => prev + 1);
     };
 
     if (menuElementsError || favoriteError) {
-        return (
-            <>
-                { menuElementsError && <p>{ menuElementsError }</p> }
-                { favoriteError && <p>{ favoriteError }</p> }
-            </>
-        );
+        return <p>{menuElementsError || favoriteError}</p>
     }
 
     return (
@@ -74,7 +76,7 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
     );
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: never) => ({
     isAuth: isAuth(state)
 });
 

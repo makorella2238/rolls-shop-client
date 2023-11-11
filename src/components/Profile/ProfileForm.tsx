@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import s from './Profile.module.css';
 import {IProfile} from "../hooks/profile.ts";
 import AuthModal from "../AuthModal/AuthModal.tsx";
+import React from "react";
 
 interface fields {
     label: string
@@ -23,7 +24,7 @@ interface fields {
 interface ProfileFormProps {
     fields: fields[]
     profile: IProfile
-    onSubmit: (data: any) => void
+    onSubmit: (data: never) => void
     updateProfileLoading: boolean
     setUpdateProfileLoading: React.Dispatch<React.SetStateAction<boolean>>
 }

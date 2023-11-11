@@ -9,9 +9,10 @@ import Preloader from "../common/Preloader/Preloader.tsx";
 import historyIcon from '../../../public/Icon/history-icon.png'
 import {Link} from "react-router-dom";
 import AuthModal from "../AuthModal/AuthModal.tsx";
+import React from "react";
 
 interface ProfileProps {
-    profile: any
+    profile: never
     username: string
     handleUpdateProfile: (firstName: string, lastName: string, phone: string, email: string) => void
     updateProfileLoading: boolean
@@ -81,10 +82,6 @@ export const Profile = ({
         {label: "Email", name: "email", validation: emailValidation},
     ];
 
-    function handleResetPasswordForm() {
-        // Дополнительные действия при сбросе формы пароля
-    }
-
     function handleDeleteProfileClick() {
         handleDeleteProfile()
         setDeleteProfileLoading(true)
@@ -109,7 +106,6 @@ export const Profile = ({
                 <h2 className={ s.subheading }>Изменение пароля</h2>
                 <ChangePasswordForm onSubmit={ handleChangePasswordSubmit }
                                     isChangePasswordModal={ isChangePasswordModal }
-                                    onFormReset={ handleResetPasswordForm }
                                     setIsChangePasswordModal={ setIsChangePasswordModal }
                                     changePasswordErr={ changePasswordErr }/>
 

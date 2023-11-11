@@ -4,7 +4,7 @@ import s from './Registration.module.css'
 import {Link} from "react-router-dom";
 
 interface RegistrationProps {
-    handleRegistration: (p: any) => void;
+    handleRegistration: (p: {password: string, username: string}) => void;
     error?: string
 }
 
@@ -14,14 +14,13 @@ interface error {
 }
 
 function Registration({handleRegistration, error}: RegistrationProps) {
-    debugger
     const {
         register,
         handleSubmit,
         formState: {errors},
     } = useForm()
 
-    const onSubmit = (data: any) => {
+    const onSubmit = (data: {password: string, username: string} ) => {
         console.log(data)
         handleRegistration({...data})
     }

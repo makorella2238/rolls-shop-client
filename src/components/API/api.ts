@@ -7,7 +7,8 @@ const instance = axios.create({
     //В get запросах вторым параметром мы передаем авторизованность логин пароль
     withCredentials: true,
     // Устанавливаем базовый URL
-    baseURL: process.env.server_URI || "http://localhost:3200/api/",
+    // baseURL: process.env.server_URI || "http://localhost:3200/api/",
+    baseURL: "https://tiny-gold-pigeon-boot.cyclic.app/api",
 });
 
 instance.interceptors.request.use((config) => {
@@ -93,7 +94,6 @@ export const cart_requests = {
     // @ts-ignore
     async create({oldId, img, title, weight, price, details, category}) {
         await instance.post('cart', {oldId, img, title, weight, price, details, category})
-        debugger
     },
     async getCart() {
         const response = await instance.get("cart")
@@ -139,7 +139,6 @@ export const profile_request = {
     // @ts-ignore
     async updateProfile({firstName, lastName, phone, email}) {
         const response = await instance.post("profile", {firstName, lastName, phone, email});
-        debugger
         return response.data
     },
     async getProfile() {

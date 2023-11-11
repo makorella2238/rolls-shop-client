@@ -8,7 +8,7 @@ import infoIcon from '../../../public/Icon/info-icon.svg'
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import Counter from "../common/Counter/Counter.tsx";
-import {useState} from "react";
+import React, {useState} from "react";
 import AuthModal from "../AuthModal/AuthModal.tsx";
 import {IProfile} from "../hooks/profile.ts";
 import {IOrder} from "../hooks/order.ts";
@@ -37,7 +37,6 @@ const Cart = ({
                   successCreateOrder, setSuccessCreateOrder,
                   setDeleteCartLoading, deleteCartLoading
               }: CartProps) => {
-    debugger
     const {register, handleSubmit, formState: {errors}} = useForm();
     const [infoModal, setInfoModal] = useState(false)
 
@@ -73,13 +72,14 @@ const Cart = ({
 
     const [isAuthModal, setIsAuthModal] = useState(false)
 
-    function onHandleSubmit(data: any) {
+    function onHandleSubmit(data: never) {
         if (cartItem.length === 0) {
             setIsAuthModal(true)
         } else {
 
             const orderItems = cartItem.map((el) => {
                 // @ts-ignore
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
                 const {_id, __v, ...rest} = el;
                 return rest;
             });

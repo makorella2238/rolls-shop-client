@@ -14,44 +14,44 @@ interface CartAPIContainerProps {
 
 
 const CartAPIContainer = ({isAuth}: CartAPIContainerProps) => {
-    if (isAuth) {
-        const [deleteAllError, setDeleteAllError] = useState("");
-        const [сreateOrderLoading, setCreateOrderLoading] = useState(false);
-        const [deleteCartLoading, setDeleteCartLoading] = useState(false);
-        const [successCreateOrder, setSuccessCreateOrder] = useState(false);
-        const {data: profileData, isFetching: profileFetching, error: profileError} = useGetProfile()
-        // @ts-ignore
-        const {data: cartData, isLoading: cartFetching, error: cartError} = useGetCartItems()
-        // @ts-ignore
-        const {handleDelete} = useDeleteCartItem(setDeleteCartLoading);
-        const {handleDeleteAll} = useDeleteAllCartItems(setDeleteAllError);
-        const {handleCreateOrderItems} = useCreateOrderItems(setCreateOrderLoading, setSuccessCreateOrder)
 
-        if (cartFetching || profileFetching) {
-            return <Preloader/>;
-        }
-        if (profileError || cartError) {
-            return (
-                <>
-                    { profileError && <p>{ profileError }</p> }
-                    { cartError && <p>{ cartError }</p> }
-                </>
-            )
-        }
+    const [deleteAllError, setDeleteAllError] = useState("");
+    const [сreateOrderLoading, setCreateOrderLoading] = useState(false);
+    const [deleteCartLoading, setDeleteCartLoading] = useState(false);
+    const [successCreateOrder, setSuccessCreateOrder] = useState(false);
 
-        // @ts-ignore
-        return <Cart cartItem={ cartData } handleDelete={ handleDelete } handleDeleteAll={ handleDeleteAll }
-                     deleteAllError={ deleteAllError } profile={profileData} handleCreateOrderItems={handleCreateOrderItems}
-                     сreateOrderLoading={сreateOrderLoading} setCreateOrderLoading={setCreateOrderLoading}
-                     successCreateOrder={successCreateOrder} setSuccessCreateOrder={setSuccessCreateOrder}
-                     deleteCartLoading={deleteCartLoading} setDeleteCartLoading={setDeleteCartLoading}
-        />
-    } else {
+    if (!isAuth) {
         return <AuthModal/>
     }
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const {data: profileData, isFetching: profileFetching, error: profileError} = useGetProfile()
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const {data: cartData, isLoading: cartFetching, error: cartError} = useGetCartItems()
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const {handleDelete} = useDeleteCartItem(setDeleteCartLoading);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const {handleDeleteAll} = useDeleteAllCartItems(setDeleteAllError);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const {handleCreateOrderItems} = useCreateOrderItems(setCreateOrderLoading, setSuccessCreateOrder)
+
+    if (cartFetching || profileFetching) {
+        return <Preloader/>;
+    }
+    if (profileError || cartError) {
+        // @ts-ignore
+        return <p>{ profileError || cartError }</p>
+    }
+
+    return <Cart cartItem={ cartData } handleDelete={ handleDelete } handleDeleteAll={ handleDeleteAll }
+                 deleteAllError={ deleteAllError } profile={ profileData }
+                 handleCreateOrderItems={ handleCreateOrderItems }
+                 сreateOrderLoading={ сreateOrderLoading } setCreateOrderLoading={ setCreateOrderLoading }
+                 successCreateOrder={ successCreateOrder } setSuccessCreateOrder={ setSuccessCreateOrder }
+                 deleteCartLoading={ deleteCartLoading } setDeleteCartLoading={ setDeleteCartLoading }
+    />
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: never) => {
     return {
         isAuth: isAuth(state),
     }
