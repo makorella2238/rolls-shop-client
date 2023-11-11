@@ -1,8 +1,8 @@
 import {useForm} from "react-hook-form";
 // @ts-ignore
 import s from './Profile.module.css';
-import {IProfile} from "../hooks/profile.ts";
-import AuthModal from "../AuthModal/AuthModal.tsx";
+import {IProfile} from "../hooks/profile";
+import AuthModal from "../AuthModal/AuthModal";
 import React from "react";
 
 interface fields {
@@ -49,7 +49,6 @@ const ProfileForm = ({onSubmit, fields, profile, updateProfileLoading, setUpdate
                     { errors[field.name] && (
                         <span className={ s.error }>
                             { errors[field.name].message }
-                            { errors[field.name].maxLength && ` ${ errors[field.name].maxLength.message }` }
                          </span>
                     ) }
                 </div>

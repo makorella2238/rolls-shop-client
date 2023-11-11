@@ -1,14 +1,14 @@
 import axios from "axios";
-import {IMenuItem} from "../../../types.ts";
-import {IOrder} from "../hooks/order.ts";
+import {IMenuItem} from "../../../types";
+import {IOrder} from "../hooks/order";
 
 // Создаем свой axios с нужными нами нстройками
 const instance = axios.create({
     //В get запросах вторым параметром мы передаем авторизованность логин пароль
     withCredentials: true,
     // Устанавливаем базовый URL
-    // baseURL: process.env.server_URI || "http://localhost:3200/api/",
-    baseURL: "https://tiny-gold-pigeon-boot.cyclic.app/api",
+    baseURL: process.env.server_URI || "http://localhost:3200/api/",
+    // baseURL: "https://tiny-gold-pigeon-boot.cyclic.app/api",
 });
 
 instance.interceptors.request.use((config) => {

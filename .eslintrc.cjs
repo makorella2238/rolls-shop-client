@@ -8,12 +8,13 @@ module.exports = {
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh', '@typescript-eslint'], // Добавлен плагин @typescript-eslint
+  plugins: ['react-refresh', '@typescript-eslint'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
-    '@typescript-eslint/ban-ts-comment': 'off', // Отключение проверки @ts-ignore
+    '@typescript-eslint/ban-ts-comment': 'off',
+    'react/jsx-one-child-per-line': 'off', // Отключение проверки на одного ребенка в JSX
   },
 };

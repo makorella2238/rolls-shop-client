@@ -7,12 +7,12 @@ import deleteItem from '../../../public/Icon/delete-icon.svg'
 import infoIcon from '../../../public/Icon/info-icon.svg'
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
-import Counter from "../common/Counter/Counter.tsx";
+import Counter from "../common/Counter/Counter";
 import React, {useState} from "react";
-import AuthModal from "../AuthModal/AuthModal.tsx";
-import {IProfile} from "../hooks/profile.ts";
-import {IOrder} from "../hooks/order.ts";
-import Preloader from "../common/Preloader/Preloader.tsx";
+import AuthModal from "../AuthModal/AuthModal";
+import {IProfile} from "../hooks/profile";
+import {IOrder} from "../hooks/order";
+import Preloader from "../common/Preloader/Preloader";
 
 interface CartProps {
     cartItem: ICartItem[]
