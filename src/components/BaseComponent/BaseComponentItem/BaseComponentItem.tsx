@@ -3,7 +3,7 @@ import s from './BaseComponentItem.module.css'
 // @ts-ignore
 import back from '../../../assets/back.png'
 // @ts-ignore
-import cart from '../../../../public/Icon/cart-icon.png'
+import cart from '../../../assets/Icon/cart-icon.png'
 import React, {useState} from "react";
 import {ICartItem, IMenuItem} from "../../../../types.ts";
 import AuthModal from "../../AuthModal/AuthModal.tsx";
