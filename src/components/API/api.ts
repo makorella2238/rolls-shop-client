@@ -7,7 +7,7 @@ const instance = axios.create({
     //В get запросах вторым параметром мы передаем авторизованность логин пароль
     withCredentials: true,
     // Устанавливаем базовый URL
-    baseURL: "http://localhost:3200/api/",
+    baseURL: process.env.server_URI || "http://localhost:3200/api/",
 });
 
 instance.interceptors.request.use((config) => {
