@@ -2,9 +2,10 @@
 import s from './AuthModal.module.css'
 import {Link} from "react-router-dom";
 // @ts-ignore
-import success_update from "../../../public/Icon/success_update.png";
+import success_update from "../../assets/Icon/success_update.png";
 // @ts-ignore
-import failed_update from '../../../public/Icon/failed-operation-icon.png'
+import failed_update from '../../assets/Icon/failed-operation-icon.png'
+import React from "react";
 
 interface AuthModalProps {
     title?: string
@@ -18,7 +19,6 @@ interface AuthModalProps {
 }
 
 function AuthModal({description, title, successfulOperation, setUpdateProfileLoading, setIsChangePasswordModal, setSuccessCreateOrder, setProfileFormErr, operationFailed}: AuthModalProps) {
-    debugger
 
     const handleClickOK = () => {
         if (setUpdateProfileLoading) {
