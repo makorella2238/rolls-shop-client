@@ -2,8 +2,6 @@ import {Link} from "react-router-dom";
 // @ts-ignore
 import s from './NavBar.module.css'
 // @ts-ignore
-import logoImg from '../../assets/nav/logo.svg'
-// @ts-ignore
 import personalAccountImg from '../../assets/nav/personal account.png'
 // @ts-ignore
 import loginImg from '../../assets/nav/login.png'
@@ -30,7 +28,7 @@ const NavBar = ({setIsAuthFalse, isAuth, username, totalFavoritesCount, totalCar
         <header className={ s.header }>
             <div className={ s.logo }>
                 <Link to="/">
-                    <img className={ s.logoImg } src={ logoImg } alt="logo"/>
+                    <img className={ s.logoImg } src="../../assets/nav/logo.jpg" alt="logo"/>
                 </Link>
             </div>
             <div className={ s.nav }>
