@@ -11,7 +11,7 @@ interface MenuElementsProps {
     handleCreateCartItem: (item: ICartItem) => void;
     isAuth: boolean;
     favoriteItems: IMenuItem[];
-    menuRef: any;
+    menuRef: never;
     menuElementsCartLoading: boolean
     menuElementsFavoriteLoading: boolean
     setMenuElementsCartLoading: React.Dispatch<React.SetStateAction<boolean>>
@@ -25,8 +25,6 @@ const MenuElements = ({
                           isAuth,
                           menuItems,
                           favoriteItems,
-                          // menuElFetching,
-                          // favoriteFetching,
                           menuElementsFavoriteLoading,
                           menuElementsCartLoading,
                           setMenuElementsCartLoading,

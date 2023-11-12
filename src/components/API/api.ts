@@ -7,6 +7,7 @@ const instance = axios.create({
     //В get запросах вторым параметром мы передаем авторизованность логин пароль
     withCredentials: true,
     // baseURL: process.env.server_URI || "http://localhost:3200/api/",
+    // baseURL: "http://localhost:3200/api/",
     baseURL: "https://tiny-gold-pigeon-boot.cyclic.app/api",
 });
 

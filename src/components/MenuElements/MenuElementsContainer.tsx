@@ -27,12 +27,12 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
     const [favoriteItems, setFavoriteItems] = useState<IMenuItem[]>([]);
     const [categoryId, setCategoryId] = useState(1);
 
-    const {data: menuItemsData, isFetching: menuElementsIsFetching, error: menuElementsError} =
-        useGetMenuElements(categoryId);
+    const {data: menuItemsData, isFetching: menuElementsIsFetching, error: menuElementsError} = useGetMenuElements(categoryId);
     // @ts-ignore
     let favoriteFetching = false;
     let favoriteError = null;
-
+    // eslint-disable-next-line no-debugger
+    debugger
     if (isAuth) {
         // eslint-disable-next-line react-hooks/rules-of-hooks
         const { isFetching, error } = useGetFavoriteItems(setFavoriteItems);
@@ -57,7 +57,7 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
                 loadNextCategory();
             }
         }
-    }, [inView, menuElementsData, categoryId]);
+    }, [inView, menuElementsData]);
 
     const loadNextCategory = () => {
         setCategoryId(prev => prev + 1);
