@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 // @ts-ignore
 import s from './NavBar.module.css'
 // @ts-ignore
-import logoImg from '../../assets/nav/logo.webp'
+import logoImg from '../../assets/nav/logo.svg'
 // @ts-ignore
 import personalAccountImg from '../../assets/nav/personal account.png'
 // @ts-ignore
