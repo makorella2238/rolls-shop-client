@@ -2,9 +2,9 @@ import {ICartItem} from "../../../types.ts";
 // @ts-ignore
 import s from './Cart.module.css'
 // @ts-ignore
-import deleteItem from '../../../public/Icon/delete-icon.svg'
+import deleteItem from '../../assets/Icon/delete-icon.svg'
 // @ts-ignore
-import infoIcon from '../../../public/Icon/info-icon.svg'
+import infoIcon from '../../assets/Icon/info-icon.svg'
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import Counter from "../common/Counter/Counter";
