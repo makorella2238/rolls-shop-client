@@ -6,7 +6,7 @@ import {IChangePassword} from "../hooks/auth.ts";
 import {IProfile} from "../hooks/profile.ts";
 import Preloader from "../common/Preloader/Preloader.tsx";
 // @ts-ignore
-import historyIcon from '../../../public/Icon/history-icon.png'
+import historyIcon from '../../assets/Icon/history-icon.png'
 import {Link} from "react-router-dom";
 import AuthModal from "../AuthModal/AuthModal.tsx";
 import React from "react";
