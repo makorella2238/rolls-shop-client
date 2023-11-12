@@ -10,7 +10,7 @@ interface MenuElementsProps {
     handleToggleFavorite: (item: IMenuItem) => void;
     handleCreateCartItem: (item: ICartItem) => void;
     isAuth: boolean;
-    favoriteItems: IMenuItem[];
+    favoriteItems?: IMenuItem[];
     menuRef: never;
     menuElementsCartLoading: boolean
     menuElementsFavoriteLoading: boolean
@@ -35,7 +35,7 @@ const MenuElements = ({
             <React.Fragment key={ item.category }>
                 <h1 className={ s.title }>{ item.category }</h1>
                 { item.items.map(el => {
-                    const isFavorite = favoriteItems.some(favorite => favorite.oldId === el._id);
+                    const isFavorite = favoriteItems?.some(favorite => favorite.oldId === el._id);
                     return (
                         <BaseComponentItem
                             key={ el._id }

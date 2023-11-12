@@ -16,6 +16,10 @@ interface MenuElementsContainerProps {
 }
 
 const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
+    // @ts-ignore
+    let favoriteFetching = false;
+    let favoriteError = null;
+    let favoriteItems: IMenuItem[] = []
 
     const {ref, inView} = useInView({threshold: 0});
     const [menuElementsCartLoading, setMenuElementsCartLoading] = useState(false);
@@ -24,21 +28,21 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
     const {handleToggleFavorite} = useToggleFavoriteItem(setMenuElementsFavoriteLoading);
 
     const [menuElementsData, setMenuElementsData] = useState<IMenuElement[]>([]);
-    const [favoriteItems, setFavoriteItems] = useState<IMenuItem[]>([]);
+    // const [favoriteItems, setFavoriteItems] = useState<IMenuItem[]>([]);
     const [categoryId, setCategoryId] = useState(1);
 
     const {data: menuItemsData, isFetching: menuElementsIsFetching, error: menuElementsError} = useGetMenuElements(categoryId);
-    // @ts-ignore
-    let favoriteFetching = false;
-    let favoriteError = null;
+
     // eslint-disable-next-line no-debugger
     debugger
     if (isAuth) {
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        const { isFetching, error } = useGetFavoriteItems(setFavoriteItems);
+        const favoriteHook = useGetFavoriteItems();
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        favoriteFetching = isFetching;
-        favoriteError = error;
+        favoriteItems = favoriteHook.data
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        favoriteFetching = favoriteHook.isFetching;
+        favoriteError = favoriteHook.error;
     }
 
     if(menuElementsIsFetching) {
