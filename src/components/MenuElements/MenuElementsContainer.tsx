@@ -32,20 +32,12 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
     const [categoryId, setCategoryId] = useState(1);
 
     const {data: menuItemsData, isFetching: menuElementsIsFetching, error: menuElementsError} = useGetMenuElements(categoryId);
-
+    const {data: favoriteItems, isFetching: favoriteIsFetching, error: favoriteError} = useGetFavoriteItems()
+    
     // eslint-disable-next-line no-debugger
     debugger
-    if (isAuth) {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        const favoriteHook = useGetFavoriteItems();
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        favoriteItems = favoriteHook.data
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        favoriteFetching = favoriteHook.isFetching;
-        favoriteError = favoriteHook.error;
-    }
 
-    if(menuElementsIsFetching) {
+    if(menuElementsIsFetching || favoriteIsFetching) {
         return <Preloader/>
     }
 
