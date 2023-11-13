@@ -16,11 +16,7 @@ interface MenuElementsContainerProps {
 }
 
 const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
-    // @ts-ignore
-    let favoriteFetching = false;
-    let favoriteError = null;
-    let favoriteItems: IMenuItem[] = []
-
+    
     const {ref, inView} = useInView({threshold: 0});
     const [menuElementsCartLoading, setMenuElementsCartLoading] = useState(false);
     const [menuElementsFavoriteLoading, setMenuElementsFavoriteLoading] = useState(false);
