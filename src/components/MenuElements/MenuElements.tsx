@@ -30,26 +30,23 @@ const MenuElements = ({
                           setMenuElementsCartLoading,
                           setMenuElementsFavoriteLoading
                       }: MenuElementsProps) => {
-    const menuElements = menuItems.map(item => {
+    debugger
+    const menuElements = menuItems.items.map(el => {
+        const isFavorite = favoriteItems?.some(favorite => favorite.oldId === el._id);
         return (
-            <React.Fragment key={ item.category }>
-                <h1 className={ s.title }>{ item.category }</h1>
-                { item.items.map(el => {
-                    const isFavorite = favoriteItems?.some(favorite => favorite.oldId === el._id);
-                    return (
-                        <BaseComponentItem
-                            key={ el._id }
-                            menuItem={ el }
-                            isFavorite={ isFavorite }
-                            isAuth={ isAuth }
-                            handleCreateCartItem={ handleCreateCartItem }
-                            handleToggleFavorite={ handleToggleFavorite }
-                            category={ item.category.toLowerCase() }
-                            setMenuElementsCartLoading={setMenuElementsCartLoading }
-                            setMenuElementsFavoriteLoading={setMenuElementsFavoriteLoading}
-                        />
-                    );
-                }) }
+            <React.Fragment key={ el._id }>
+                <h1 className={ s.title }>{ menuItems.category }</h1>
+                <BaseComponentItem
+                    key={ el._id }
+                    menuItem={ el }
+                    isFavorite={ isFavorite }
+                    isAuth={ isAuth }
+                    handleCreateCartItem={ handleCreateCartItem }
+                    handleToggleFavorite={ handleToggleFavorite }
+                    category={ menuItems.category.toLowerCase() }
+                    setMenuElementsCartLoading={ setMenuElementsCartLoading }
+                    setMenuElementsFavoriteLoading={ setMenuElementsFavoriteLoading }
+                />
             </React.Fragment>
         );
     });

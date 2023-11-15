@@ -23,6 +23,7 @@ const MenuOneElementContainer = ({isAuth}: MenuOneElementContainerProps) => {
     const {handleCreateCartItem} = useCreateCartItem(setCreateCartOneElLoading)
 
     if (isAuth) {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
         const cartItemsHook = useGetCartItems();
         cartData = cartItemsHook.data
         cartFetching = cartItemsHook.isFetching;
@@ -52,7 +53,7 @@ const MenuOneElementContainer = ({isAuth}: MenuOneElementContainerProps) => {
     );
 };
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: never) => {
     return {
         isAuth: isAuth(state),
     };

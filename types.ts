@@ -17,7 +17,7 @@ export interface ICartItem {
     price: number
     weight: string
     quantity: number
-    details?: any
+    details?: never
     category: string
 }
 
@@ -32,7 +32,7 @@ export interface IMenuItem {
     description: string
     count?: [number]
     taste?: [string]
-    price: any
+    price: never
     prices?: IPrice
     priceDrinks?: [number]
 }
