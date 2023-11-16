@@ -10,13 +10,13 @@ import {IMenuElement, IMenuItem} from '../../../types';
 
 import MenuElements from './MenuElements';
 import {useInView} from 'react-intersection-observer';
-import Preloader from '../common/Preloader/Preloader';
+import Preloader from "../common/Preloader/Preloader.tsx";
 interface MenuElementsContainerProps {
     isAuth: boolean;
 }
 
 const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
-    
+
     const {ref, inView} = useInView({threshold: 0});
     const [menuElementsCartLoading, setMenuElementsCartLoading] = useState(false);
     const [menuElementsFavoriteLoading, setMenuElementsFavoriteLoading] = useState(false);
@@ -24,17 +24,19 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
     const {handleToggleFavorite} = useToggleFavoriteItem(setMenuElementsFavoriteLoading);
 
     const [menuElementsData, setMenuElementsData] = useState<IMenuElement[]>([]);
-    // const [favoriteItems, setFavoriteItems] = useState<IMenuItem[]>([]);
+    const [favoriteItems, setFavoriteItems] = useState<IMenuItem[]>([]);
     const [categoryId, setCategoryId] = useState(1);
 
-    const {data: menuItemsData, isFetching: menuElementsIsFetching, error: menuElementsError} = useGetMenuElements(categoryId);
-    const {data: favoriteItems, isFetching: favoriteIsFetching, error: favoriteError} = useGetFavoriteItems()
-    
-    // eslint-disable-next-line no-debugger
-    debugger
+    const {data: menuItemsData, isFetching: menuElementsIsFetching, error: menuElementsError} =
+        useGetMenuElements(categoryId);
+    let favoriteFetching = false;
+    let favoriteError = null;
 
-    if(menuElementsIsFetching || favoriteIsFetching) {
-        return <Preloader/>
+    if (isAuth) {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const { isFetching, error } = useGetFavoriteItems(setFavoriteItems);
+        favoriteFetching = isFetching;
+        favoriteError = error;
     }
 
     useEffect(() => {
@@ -59,11 +61,15 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
         return <p>{menuElementsError || favoriteError}</p>
     }
 
+    if (favoriteFetching) {
+        return <Preloader/>
+    }
+
     return (
-    // @ts-ignore
+        // @ts-ignore
         <MenuElements isAuth={ isAuth } handleCreateCartItem={ handleCreateCartItem } menuItems={ menuElementsData } menuRef={ ref }
                       handleToggleFavorite={ handleToggleFavorite } favoriteItems={ favoriteItems } menuElementsCartLoading={menuElementsCartLoading} setMenuElementsCartLoading={setMenuElementsCartLoading}
-                      menuElementsFavoriteLoading={menuElementsFavoriteLoading} setMenuElementsFavoriteLoading={setMenuElementsFavoriteLoading}
+                      menuElementsFavoriteLoading={menuElementsFavoriteLoading} setMenuElementsFavoriteLoading={setMenuElementsFavoriteLoading} menuElementsIsFetching={menuElementsIsFetching}
         />
     );
 }
