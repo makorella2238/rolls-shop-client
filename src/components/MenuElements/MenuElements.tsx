@@ -10,7 +10,7 @@ interface MenuElementsProps {
     handleToggleFavorite: (item: IMenuItem) => void;
     handleCreateCartItem: (item: ICartItem) => void;
     isAuth: boolean;
-    favoriteItems?: IMenuItem[];
+    favoriteItems: IMenuItem[];
     menuRef: never;
     menuElementsCartLoading: boolean
     menuElementsFavoriteLoading: boolean
@@ -30,23 +30,26 @@ const MenuElements = ({
                           setMenuElementsCartLoading,
                           setMenuElementsFavoriteLoading
                       }: MenuElementsProps) => {
-    debugger
-    const menuElements = menuItems.items.map(el => {
-        const isFavorite = favoriteItems?.some(favorite => favorite.oldId === el._id);
+    const menuElements = menuItems.map(item => {
         return (
-            <React.Fragment key={ el._id }>
-                <h1 className={ s.title }>{ menuItems.category }</h1>
-                <BaseComponentItem
-                    key={ el._id }
-                    menuItem={ el }
-                    isFavorite={ isFavorite }
-                    isAuth={ isAuth }
-                    handleCreateCartItem={ handleCreateCartItem }
-                    handleToggleFavorite={ handleToggleFavorite }
-                    category={ menuItems.category.toLowerCase() }
-                    setMenuElementsCartLoading={ setMenuElementsCartLoading }
-                    setMenuElementsFavoriteLoading={ setMenuElementsFavoriteLoading }
-                />
+            <React.Fragment key={ item.category }>
+                <h1 className={ s.title }>{ item.category }</h1>
+                { item.items.map(el => {
+                    const isFavorite = favoriteItems.some(favorite => favorite.oldId === el._id);
+                    return (
+                        <BaseComponentItem
+                            key={ el._id }
+                            menuItem={ el }
+                            isFavorite={ isFavorite }
+                            isAuth={ isAuth }
+                            handleCreateCartItem={ handleCreateCartItem }
+                            handleToggleFavorite={ handleToggleFavorite }
+                            category={ item.category.toLowerCase() }
+                            setMenuElementsCartLoading={setMenuElementsCartLoading }
+                            setMenuElementsFavoriteLoading={setMenuElementsFavoriteLoading}
+                        />
+                    );
+                }) }
             </React.Fragment>
         );
     });

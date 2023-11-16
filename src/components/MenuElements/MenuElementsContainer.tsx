@@ -1,13 +1,16 @@
 import {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {isAuth} from '../Redux/app/app-selector';
+
 import {useCreateCartItem} from '../hooks/cart';
 import {useGetMenuElements} from '../hooks/menuItems';
 import {useGetFavoriteItems, useToggleFavoriteItem} from '../hooks/favorite';
+
+import {IMenuElement, IMenuItem} from '../../../types';
+
 import MenuElements from './MenuElements';
 import {useInView} from 'react-intersection-observer';
-import Preloader from '../common/Preloader/Preloader';
-import {IMenuElement, IMenuItem} from "../../../types.ts";
+import Preloader from "../common/Preloader/Preloader.tsx";
 interface MenuElementsContainerProps {
     isAuth: boolean;
 }
@@ -23,41 +26,50 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
     const [menuElementsData, setMenuElementsData] = useState<IMenuElement[]>([]);
     const [favoriteItems, setFavoriteItems] = useState<IMenuItem[]>([]);
     const [categoryId, setCategoryId] = useState(1);
-    const {data: menuItemsData, isFetching: menuElementsIsFetching, error: menuElementsError} = useGetMenuElements(categoryId);
-    const { isFetching: favoriteIsFetching, error: favoriteError} = useGetFavoriteItems(setFavoriteItems)
 
-    // eslint-disable-next-line no-debugger
-    debugger
+    const {data: menuItemsData, isFetching: menuElementsIsFetching, error: menuElementsError} =
+        useGetMenuElements(categoryId);
+    let favoriteFetching = false;
+    let favoriteError = null;
 
-    if(menuElementsIsFetching || favoriteIsFetching) {
-        return <Preloader/>
+    if (isAuth) {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const { isFetching, error } = useGetFavoriteItems(setFavoriteItems);
+        favoriteFetching = isFetching;
+        favoriteError = error;
     }
 
     useEffect(() => {
         if (menuItemsData) {
             setMenuElementsData(prev => [...prev, menuItemsData]);
         }
+    }, [menuItemsData]);
+
+    useEffect(() => {
         if (inView && menuElementsData.length) {
             if (categoryId < 6) {
                 loadNextCategory();
             }
         }
-    }, [menuItemsData, inView, menuElementsData]);
+    }, [inView, menuElementsData]);
 
     const loadNextCategory = () => {
         setCategoryId(prev => prev + 1);
     };
 
     if (menuElementsError || favoriteError) {
-        // @ts-ignore
         return <p>{menuElementsError || favoriteError}</p>
+    }
+
+    if (favoriteFetching) {
+        return <Preloader/>
     }
 
     return (
         // @ts-ignore
-        <MenuElements isAuth={ isAuth } handleCreateCartItem={ handleCreateCartItem } menuItems={ menuItemsData } menuRef={ ref }
+        <MenuElements isAuth={ isAuth } handleCreateCartItem={ handleCreateCartItem } menuItems={ menuElementsData } menuRef={ ref }
                       handleToggleFavorite={ handleToggleFavorite } favoriteItems={ favoriteItems } menuElementsCartLoading={menuElementsCartLoading} setMenuElementsCartLoading={setMenuElementsCartLoading}
-                      menuElementsFavoriteLoading={menuElementsFavoriteLoading} setMenuElementsFavoriteLoading={setMenuElementsFavoriteLoading}
+                      menuElementsFavoriteLoading={menuElementsFavoriteLoading} setMenuElementsFavoriteLoading={setMenuElementsFavoriteLoading} menuElementsIsFetching={menuElementsIsFetching}
         />
     );
 }
@@ -66,4 +78,4 @@ const mapStateToProps = (state: never) => ({
     isAuth: isAuth(state)
 });
 
-export default connect(mapStateToProps, {})(MenuElementsContainer);
+export default connect(mapStateToProps)(MenuElementsContainer);
