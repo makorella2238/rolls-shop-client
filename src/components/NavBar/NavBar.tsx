@@ -28,34 +28,34 @@ const NavBar = ({setIsAuthFalse, isAuth, username, totalFavoritesCount, totalCar
         <header className={ s.header }>
             <div className={ s.logo }>
                 <Link to="/">
-                    <img className={ s.logoImg } src="../../assets/nav/logo.jpg" alt="logo"/>
+                    <img className={ s.logoImg } src="../../../public/Icon/logo-icon.png" alt="logo"/>
                 </Link>
             </div>
             <div className={ s.nav }>
                 <Link to="/">
                     <div className={ s.card }>
-                        <img className={ s.icon } src="../../assets/Icon/home-icon.svg" alt="home"/>
+                        <img className={ s.icon } src="../../../public/Icon/home-icon.svg" alt="home"/>
                         <p className={ s.content }>Menu</p>
                     </div>
                 </Link>
 
                 <Link to="/about">
                     <div className={ s.card }>
-                        <img className={ s.icon } src="../../assets/Icon/about-us-icon.png" alt="aboutAs"/>
+                        <img className={ s.icon } src="../../../public/Icon/about-us-icon.png" alt="aboutAs"/>
                         <p className={ s.content }>About as</p>
                     </div>
                 </Link>
 
                 <Link to="/cart">
                     <div className={ s.card }>
-                        <img className={ s.icon } src="../../assets/Icon/cart-icon.png" alt="cart"/>
+                        <img className={ s.icon } src="../../../public/Icon/cart-icon.png" alt="cart"/>
                         <p className={ s.content }> { totalCartPrice }</p>
                     </div>
                 </Link>
 
                 <Link to="/favorites">
                     <div className={ s.card }>
-                        <img className={ s.icon } src="../../assets/Icon/favorite-icon.png"
+                        <img className={ s.icon } src="../../../public/Icon/favorite-icon.png"
                              alt="favorites"/>
                         <p className={ s.content }>{ totalFavoritesCount }</p>
                     </div>

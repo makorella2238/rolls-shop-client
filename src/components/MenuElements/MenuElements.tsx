@@ -45,8 +45,8 @@ const MenuElements = ({
                             handleCreateCartItem={ handleCreateCartItem }
                             handleToggleFavorite={ handleToggleFavorite }
                             category={ item.category.toLowerCase() }
-                            setMenuElementsCartLoading={setMenuElementsCartLoading }
-                            setMenuElementsFavoriteLoading={setMenuElementsFavoriteLoading}
+                            setMenuElementsCartLoading={ setMenuElementsCartLoading }
+                            setMenuElementsFavoriteLoading={ setMenuElementsFavoriteLoading }
                         />
                     );
                 }) }
@@ -56,9 +56,9 @@ const MenuElements = ({
 
     return (
         <>
-            <div className={ s.menu }> { menuElements }</div>
+            <div  className={ s.menu }> { menuElements }</div>
             { menuElementsFavoriteLoading || menuElementsCartLoading ? <Preloader/> : null }
-            <div ref={ menuRef }></div>
+            <div className={s.none} ref={ menuRef }></div>
         </>
     );
 };

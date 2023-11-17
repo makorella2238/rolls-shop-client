@@ -18,3 +18,8 @@ h1 {
 .title {
     width: 100%;
 }
+
+.none {
+    width: 1px;
+    height: 1px;
+}

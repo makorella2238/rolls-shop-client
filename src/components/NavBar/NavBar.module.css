@@ -58,11 +58,11 @@
     .nav {
         margin-right: 10px;
     }
+}
+@media (max-width: 840px) {
     .logo {
         margin-left: 10px;
     }
-}
-@media (max-width: 840px) {
     .content {
         display: none;
     }
