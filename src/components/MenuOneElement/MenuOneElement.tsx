@@ -57,11 +57,9 @@ export function MenuOneElement({isAuth, handleCreateCartItem, menuItem, cartItem
             if (details) {
                 // @ts-ignore
                 handleCreateCartItem({oldId: _id, img, title, weight, price: menuItemPrice, details, category})
-                debugger
             } else {
                 // @ts-ignore
                 handleCreateCartItem({oldId: _id, img, title, weight, price: menuItemPrice, category})
-                debugger
             }
         } else {
             setIsModal(true)

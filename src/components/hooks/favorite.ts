@@ -81,7 +81,6 @@ export const useToggleFavoriteItem = (setToggleFavoriteLoading?: React.Dispatch<
             prices,
             priceDrinks
         });
-        debugger
     };
     return {handleToggleFavorite}
 }

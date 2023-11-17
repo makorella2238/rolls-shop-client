@@ -21,7 +21,6 @@ function Registration({handleRegistration, error}: RegistrationProps) {
     } = useForm()
 
     const onSubmit = (data: {password: string, username: string} ) => {
-        console.log(data)
         handleRegistration({...data})
     }
 

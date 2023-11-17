@@ -30,7 +30,6 @@ const MenuElements = ({
                           setMenuElementsCartLoading,
                           setMenuElementsFavoriteLoading
                       }: MenuElementsProps) => {
-    console.log(menuElementsFavoriteLoading)
     const menuElements = menuItems.map(item => {
         return (
             <React.Fragment key={ item.category }>

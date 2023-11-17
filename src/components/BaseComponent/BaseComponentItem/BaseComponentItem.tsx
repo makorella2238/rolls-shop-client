@@ -79,7 +79,6 @@ function BaseComponentItem({
             }
             // @ts-ignore
             handleToggleFavorite({oldId:_id, img, weight, title, description, taste, count, category, price, prices, priceDrinks})
-            debugger
             if (setToggleFavoriteLoading) {
             setToggleFavoriteLoading(true)
             }
@@ -110,11 +109,9 @@ function BaseComponentItem({
             if (details) {
                 // @ts-ignore
                 handleCreateCartItem({oldId: oldId || _id, img, title, weight, price: menuItemPrice, details, category:newCategory})
-                debugger
             } else {
                 // @ts-ignore
                 handleCreateCartItem({oldId: oldId || _id, img, title, weight, price: menuItemPrice, category:newCategory})
-                debugger
             }
             setIsDetails(true)
         } else {

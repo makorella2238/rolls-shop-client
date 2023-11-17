@@ -22,7 +22,6 @@ function RegistrationAPIContainer() {
                      })
                 })
                 : error.response.data.errors[0].msg)
-            debugger
         }
     });
 

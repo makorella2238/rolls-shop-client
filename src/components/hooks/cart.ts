@@ -64,7 +64,6 @@ export const useCreateCartItem = (
     // @ts-ignore
     const handleCreateCartItem = ({oldId, img, title, weight, price, details, category}: CartItem) => {
         createCartItem.mutate({oldId, img, title, weight, price, details, category});
-        debugger
     };
 
     return {handleCreateCartItem}
