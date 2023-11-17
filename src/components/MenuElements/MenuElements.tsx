@@ -8,10 +8,10 @@ import Preloader from "../common/Preloader/Preloader.tsx";
 interface MenuElementsProps {
     menuItems: IMenuElement[];
     handleToggleFavorite: (item: IMenuItem) => void;
-    handleCreateCartItem: (item: ICartItem) => void;
+    handleCreateCartItem: (item: ICartItem) => void
     isAuth: boolean;
     favoriteItems: IMenuItem[];
-    menuRef: never;
+    menuRef: (node?: Element) => void
     menuElementsCartLoading: boolean
     menuElementsFavoriteLoading: boolean
     setMenuElementsCartLoading: React.Dispatch<React.SetStateAction<boolean>>
@@ -30,6 +30,7 @@ const MenuElements = ({
                           setMenuElementsCartLoading,
                           setMenuElementsFavoriteLoading
                       }: MenuElementsProps) => {
+    console.log(menuElementsFavoriteLoading)
     const menuElements = menuItems.map(item => {
         return (
             <React.Fragment key={ item.category }>

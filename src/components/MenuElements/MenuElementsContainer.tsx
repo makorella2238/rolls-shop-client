@@ -17,7 +17,7 @@ interface MenuElementsContainerProps {
 
 const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
 
-    const {ref, inView} = useInView({threshold: 0, rootMargin: '0px'});
+    const {ref, inView} = useInView({threshold: 0});
     const [menuElementsCartLoading, setMenuElementsCartLoading] = useState(false);
     const [menuElementsFavoriteLoading, setMenuElementsFavoriteLoading] = useState(false);
     const {handleCreateCartItem} = useCreateCartItem(setMenuElementsCartLoading);
@@ -27,16 +27,18 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
     const [favoriteItems, setFavoriteItems] = useState<IMenuItem[]>([]);
     const [categoryId, setCategoryId] = useState(1);
 
-    const {data: menuItemsData, isFetching: menuElementsIsFetching, error: menuElementsError} = useGetMenuElements(categoryId);
-    // @ts-ignore
+    const {data: menuItemsData, isFetching: menuElementsIsFetching, error: menuElementsError} =
+        useGetMenuElements(categoryId);
     let favoriteFetching = false;
     let favoriteError = null;
 
     if (isAuth) {
         // eslint-disable-next-line react-hooks/rules-of-hooks
         const { isFetching, error } = useGetFavoriteItems(setFavoriteItems);
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         favoriteFetching = isFetching;
         favoriteError = error;
+
     }
 
     useEffect(() => {
@@ -61,15 +63,16 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
         return <p>{menuElementsError || favoriteError}</p>
     }
 
-    if (favoriteFetching || menuElementsIsFetching) {
+    if (menuElementsIsFetching || favoriteFetching) {
         return <Preloader/>
     }
+
 
     return (
         // @ts-ignore
         <MenuElements isAuth={ isAuth } handleCreateCartItem={ handleCreateCartItem } menuItems={ menuElementsData } menuRef={ ref }
                       handleToggleFavorite={ handleToggleFavorite } favoriteItems={ favoriteItems } menuElementsCartLoading={menuElementsCartLoading} setMenuElementsCartLoading={setMenuElementsCartLoading}
-                      menuElementsFavoriteLoading={menuElementsFavoriteLoading} setMenuElementsFavoriteLoading={setMenuElementsFavoriteLoading} menuElementsIsFetching={menuElementsIsFetching}
+                      menuElementsFavoriteLoading={menuElementsFavoriteLoading} setMenuElementsFavoriteLoading={setMenuElementsFavoriteLoading}
         />
     );
 }
@@ -78,5 +81,4 @@ const mapStateToProps = (state: never) => ({
     isAuth: isAuth(state)
 });
 
-// eslint-disable-next-line react-refresh/only-export-components
 export default connect(mapStateToProps)(MenuElementsContainer);
