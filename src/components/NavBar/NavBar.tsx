@@ -6,6 +6,16 @@ import personalAccountImg from '../../assets/nav/personal account.png'
 // @ts-ignore
 import loginImg from '../../assets/nav/login.png'
 // @ts-ignore
+import home from '/Icon/home-icon.svg'
+// @ts-ignore
+import aboutUS from '../../../public/Icon/about-us-icon.png'
+// @ts-ignore
+import cart from '../../../public/Icon/cart-icon.png'
+// @ts-ignore
+import favorite from '../../../public/Icon/favorite-icon.png'
+// @ts-ignore
+import logo from '../../../public/Icon/logo-icon.png'
+// @ts-ignore
 import logoutImg from '../../assets/nav/logout.png'
 
 interface NavBarProps {
@@ -28,35 +38,34 @@ const NavBar = ({setIsAuthFalse, isAuth, username, totalFavoritesCount, totalCar
         <header className={ s.header }>
             <div className={ s.logo }>
                 <Link to="/">
-                    <img className={ s.logoImg } src="../../../public/Icon/logo-icon.png" alt="logo"/>
+                    <img className={ s.logoImg } src={logo} alt="logo"/>
                 </Link>
             </div>
             <div className={ s.nav }>
                 <Link to="/">
                     <div className={ s.card }>
-                        <img className={ s.icon } src="../../../public/Icon/home-icon.svg" alt="home"/>
+                        <img className={ s.icon } src={home} alt="home"/>
                         <p className={ s.content }>Menu</p>
                     </div>
                 </Link>
 
                 <Link to="/about">
                     <div className={ s.card }>
-                        <img className={ s.icon } src="../../../public/Icon/about-us-icon.png" alt="aboutAs"/>
+                        <img className={ s.icon } src={aboutUS} alt="aboutUs"/>
                         <p className={ s.content }>About as</p>
                     </div>
                 </Link>
 
                 <Link to="/cart">
                     <div className={ s.card }>
-                        <img className={ s.icon } src="../../../public/Icon/cart-icon.png" alt="cart"/>
+                        <img className={ s.icon } src={cart} alt="cart"/>
                         <p className={ s.content }> { totalCartPrice }</p>
                     </div>
                 </Link>
 
                 <Link to="/favorites">
                     <div className={ s.card }>
-                        <img className={ s.icon } src="../../../public/Icon/favorite-icon.png"
-                             alt="favorites"/>
+                        <img className={ s.icon } src={favorite} alt="favorites"/>
                         <p className={ s.content }>{ totalFavoritesCount }</p>
                     </div>
                 </Link>

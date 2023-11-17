@@ -62,7 +62,6 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
     if (menuElementsError || favoriteError) {
         return <p>{menuElementsError || favoriteError}</p>
     }
-
     if (menuElementsIsFetching || favoriteFetching) {
         return <Preloader/>
     }
