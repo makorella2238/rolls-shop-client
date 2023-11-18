@@ -30,6 +30,11 @@
     width: 50%;
 }
 
+.border {
+    border-bottom: 1px solid #1a1a1a1a;
+    padding-bottom: 10px;
+}
+
 .img {
     width: 60%;
     object-fit: cover;
@@ -38,7 +43,7 @@
 }
 
 .img:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .title {
@@ -53,7 +58,7 @@
     align-items: center;
 
     gap: 100px;
-    margin: 20px 0;
+    padding: 20px 0;
 }
 
 .weight {
@@ -96,7 +101,6 @@
 }
 
 .button {
-    margin-top: 10px;
     padding: 8px 16px;
     font-size: 14px;
     border: none;
@@ -130,4 +134,34 @@
 
 .selectedButton:hover {
     background-color: #0056b3;
+}
+
+@media (max-width: 1050px) {
+    .title {font-size: 25px;}
+    .description {font-size: 16px;}
+    .img {width: 80%;}
+}
+
+@media (max-width: 700px) {
+    .elementContainer {
+        display: block;
+        margin-top: 0;
+        padding: 20px;
+    }
+    .contentContainer {
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+    }
+    .imgContainer {width: 100%;}
+    .img {width: 100%;}
+    .buttonPrice {justify-content: center;}
+    .tasteButtons {justify-content: center;}
+    .countButtons {justify-content: center;}
+}
+
+@media (max-width: 370px) {
+    .title {
+        font-size: 21px;
+    }
 }

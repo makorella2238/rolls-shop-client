@@ -19,7 +19,15 @@ interface MenuOneElementProps {
     setCreateCartLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export function MenuOneElement({isAuth, handleCreateCartItem, menuItem, cartItems, category, setCreateCartLoading, createCartLoading}: MenuOneElementProps) {
+export function MenuOneElement({
+                                   isAuth,
+                                   handleCreateCartItem,
+                                   menuItem,
+                                   cartItems,
+                                   category,
+                                   setCreateCartLoading,
+                                   createCartLoading
+                               }: MenuOneElementProps) {
 
     const initialCount = getInitialValue(menuItem?.count, 0);
     const [selectedCount, setSelectedCount] = useState(initialCount);
@@ -75,44 +83,46 @@ export function MenuOneElement({isAuth, handleCreateCartItem, menuItem, cartItem
                     <img className={ s.img } src={ menuItem.img } alt={ menuItem.title }/>
                 </div>
                 <div className={ s.contentContainer }>
-                    <p className={ s.title }>{ menuItem.title }</p>
-                    <div className={ s.buttonPrice }>
-                        <p className={ s.price }>{ menuItemPrice }р</p>
-                        { !itemInCart &&
-                            <button className={ `${ c.getButton } ${ s.cartButton }` } onClick={ handleCartClick }>В
-                                корзину
-                            </button> }
-                        { itemInCart && <Counter el={ itemInCart }/> }
-                    </div>
-                    <div className={ s.tasteButtons }>
-                        { menuItem.taste?.map((taste: string) => (
-                            <button
-                                style={ menuItem.taste?.length === 1 ? {"display": "none"} : {} }
-                                key={ taste }
-                                onClick={ () => setSelectedTaste(taste) }
-                                className={ taste === selectedTaste ? s.selectedButton : s.button }
-                            >
-                                { taste }
-                            </button>
-                        )) }
-                    </div>
-                    <div className={ s.countButtons }>
-                        { menuItem.count?.map((count: number) => (
-                            <button
-                                style={ menuItem.count?.length === 1 ? {"display": "none"} : {} }
-                                key={ count }
-                                onClick={ () => setSelectedCount(count) }
-                                className={ count === selectedCount ? s.selectedButton : s.button }
-                            >
-                                { count }
-                            </button>
-                        )) }
+                    <div className={s.border}>
+                        <p className={ s.title }>{ menuItem.title }</p>
+                        <div className={ s.buttonPrice }>
+                            <p className={ s.price }>{ menuItemPrice }р</p>
+                            { !itemInCart &&
+                                <button className={ `${ c.getButton } ${ s.cartButton }` } onClick={ handleCartClick }>В
+                                    корзину
+                                </button> }
+                            { itemInCart && <Counter el={ itemInCart }/> }
+                        </div>
+                        <div className={ s.tasteButtons }>
+                            { menuItem.taste?.map((taste: string) => (
+                                <button
+                                    style={ menuItem.taste?.length === 1 ? {"display": "none"} : {} }
+                                    key={ taste }
+                                    onClick={ () => setSelectedTaste(taste) }
+                                    className={ taste === selectedTaste ? s.selectedButton : s.button }
+                                >
+                                    { taste }
+                                </button>
+                            )) }
+                        </div>
+                        <div className={ s.countButtons }>
+                            { menuItem.count?.map((count: number) => (
+                                <button
+                                    style={ menuItem.count?.length === 1 ? {"display": "none"} : {} }
+                                    key={ count }
+                                    onClick={ () => setSelectedCount(count) }
+                                    className={ count === selectedCount ? s.selectedButton : s.button }
+                                >
+                                    { count }
+                                </button>
+                            )) }
+                        </div>
                     </div>
                     <i className={ s.weight }>{ menuItem.weight }</i>
                     <p className={ s.description }>{ menuItem.description }</p>
                 </div>
             </div>
-            {createCartLoading && <Preloader/>}
+            { createCartLoading && <Preloader/> }
         </>
     )
 }

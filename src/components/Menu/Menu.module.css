@@ -4,6 +4,7 @@
     align-items: center;
     background-color: rgb(47 72 88);
     box-shadow: inset 0 2px 5px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 55px;
     padding: 10px 0;
 
     gap: 20px;
@@ -47,5 +48,11 @@
 
     ::-webkit-scrollbar {
         display: none;
+    }
+}
+
+@media (max-width: 550px) {
+    .menu {
+        margin-top: 50px;
     }
 }
