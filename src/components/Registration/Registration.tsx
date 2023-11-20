@@ -31,18 +31,27 @@ function Registration({handleRegistration, error}: RegistrationProps) {
 
             <form onSubmit={ handleSubmit(onSubmit) }>
                 <div>
+                    {!Array.isArray(error) && <p className={s.error}>{error}</p>}
                     <input className={ errors.username ? `${ s.input } ${ s.errorInput }` : s.input }
                            { ...register("username", {required: true}) }
                            placeholder='введите логин'
                     />
-                    {error?.length > 1 && <p className={s.error}>{error?.find((el: error) => el.field === 'username').message }</p>}
+                    {Array.isArray(error) && (
+                        <p className={s.error}>
+                            {error?.find((el: error) => el.field === 'username')?.message}
+                        </p>
+                    )}
                 </div>
                 <div>
                     <input className={ errors.password ? `${ s.input } ${ s.errorInput }` : s.input }
                            { ...register("password", {required: true,}) }
                            placeholder='введите пароль'
                     />
-                    {error?.length > 1 && <p className={s.error}>{error?.find((el: error) => el.field === 'password').message }</p>}
+                    {Array.isArray(error) && (
+                        <p className={s.error}>
+                            {error?.find((el: error) => el.field === 'password')?.message}
+                        </p>
+                    )}
                 </div>
                 <button className={ s.button }>Зарегистрироваться</button>
 
