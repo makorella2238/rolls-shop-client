@@ -14,6 +14,7 @@ interface MenuElementsProps {
     menuRef: (node?: Element) => void
     menuElementsCartLoading: boolean
     menuElementsFavoriteLoading: boolean
+    menuElementsIsFetching: boolean
     setMenuElementsCartLoading: React.Dispatch<React.SetStateAction<boolean>>
     setMenuElementsFavoriteLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -28,7 +29,8 @@ const MenuElements = ({
                           menuElementsFavoriteLoading,
                           menuElementsCartLoading,
                           setMenuElementsCartLoading,
-                          setMenuElementsFavoriteLoading
+                          setMenuElementsFavoriteLoading,
+                          menuElementsIsFetching
                       }: MenuElementsProps) => {
     const menuElements = menuItems.map(item => {
         return (
@@ -56,9 +58,9 @@ const MenuElements = ({
 
     return (
         <>
-            <div  className={ s.menu }> { menuElements }</div>
-            { menuElementsFavoriteLoading || menuElementsCartLoading ? <Preloader/> : null }
-            <div className={s.none} ref={ menuRef }></div>
+            <div className={ s.menu }> { menuElements }</div>
+            { menuElementsFavoriteLoading || menuElementsCartLoading || menuElementsIsFetching ? <Preloader/> : null }
+            <div className={ s.none } ref={ menuRef }></div>
         </>
     );
 };

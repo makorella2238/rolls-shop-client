@@ -62,7 +62,7 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
     if (menuElementsError || favoriteError) {
         return <p>{menuElementsError || favoriteError}</p>
     }
-    if (menuElementsIsFetching || favoriteFetching) {
+    if (!menuElementsData || favoriteFetching) {
         return <Preloader/>
     }
 
@@ -71,7 +71,7 @@ const MenuElementsContainer = ({isAuth}: MenuElementsContainerProps) => {
         // @ts-ignore
         <MenuElements isAuth={ isAuth } handleCreateCartItem={ handleCreateCartItem } menuItems={ menuElementsData } menuRef={ ref }
                       handleToggleFavorite={ handleToggleFavorite } favoriteItems={ favoriteItems } menuElementsCartLoading={menuElementsCartLoading} setMenuElementsCartLoading={setMenuElementsCartLoading}
-                      menuElementsFavoriteLoading={menuElementsFavoriteLoading} setMenuElementsFavoriteLoading={setMenuElementsFavoriteLoading}
+                      menuElementsFavoriteLoading={menuElementsFavoriteLoading} setMenuElementsFavoriteLoading={setMenuElementsFavoriteLoading} menuElementsIsFetching={menuElementsIsFetching}
         />
     );
 }
