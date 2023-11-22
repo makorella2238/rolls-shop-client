@@ -35,6 +35,7 @@ function Login({handleLogin, error}: LoginProps) {
                     <input className={errors.username ? `${s.input} ${s.errorInput}` : s.input}
                            {...register("password", {required: true})}
                            placeholder='введите пароль'
+                           type='password'
                     />
                 </div>
                 <button className={s.button}>Войти</button>
