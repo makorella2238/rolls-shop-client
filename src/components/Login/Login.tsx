@@ -15,7 +15,7 @@ function Login({handleLogin, error}: LoginProps) {
         formState: {errors},
     } = useForm()
 
-    const onSubmit = (data: any) => {
+    const onSubmit = (data: never) => {
         const {password, username} = data
         // @ts-ignore
         handleLogin({password, username})
