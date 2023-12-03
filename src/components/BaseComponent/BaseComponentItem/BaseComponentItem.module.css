@@ -154,12 +154,11 @@
 }
 
 .tasteButtons {
-    display: flex;
-    gap: 20px;
-    justify-content: flex-start;
-    overflow-y: auto;
     width: 100%;
-    min-height: 45px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    overflow: hidden;
 }
 
 .favorite {
@@ -214,6 +213,11 @@
 
 /* ---------------------    ./InCart    ---------------------------------*/
 
+@media (max-width: 1650px) {
+    .tasteButtons {
+        justify-content: flex-start;
+    }
+}
 @media (max-width: 1200px) {
     .item {
         max-width: 32%;
@@ -228,5 +232,11 @@
 @media (max-width: 560px) {
     .item {
         max-width: 100%;
+    }
+    .tasteButtons {
+        justify-content: flex-start;
+        overflow-y: auto;
+        width: 100%;
+        min-height: 35px;
     }
 }
