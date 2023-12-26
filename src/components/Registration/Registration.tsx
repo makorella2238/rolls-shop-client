@@ -2,10 +2,14 @@ import {useForm} from "react-hook-form";
 // @ts-ignore
 import s from './Registration.module.css'
 import {Link} from "react-router-dom";
+import React from "react";
+import AuthModal from "../Modal/Modal.tsx";
 
 interface RegistrationProps {
     handleRegistration: (p: {password: string, username: string}) => void;
     error?: string
+    isRegistered: boolean
+    setIsRegistered: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 interface error {
@@ -13,7 +17,7 @@ interface error {
     field: string
 }
 
-function Registration({handleRegistration, error}: RegistrationProps) {
+function Registration({handleRegistration, error, isRegistered, setIsRegistered}: RegistrationProps) {
     const {
         register,
         handleSubmit,
@@ -57,6 +61,7 @@ function Registration({handleRegistration, error}: RegistrationProps) {
 
                 <p className={s.text}>Уже есть аккаунт ? <Link to='/login'>Войти</Link></p>
             </form>
+            {isRegistered && <AuthModal title='Successful authorization' successfulOperation={true} setIsRegistered={setIsRegistered}/>}
         </div>
     );
 }

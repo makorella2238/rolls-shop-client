@@ -1,7 +1,7 @@
 import {useForm} from "react-hook-form";
 // @ts-ignore
 import s from './Profile.module.css';
-import AuthModal from "../AuthModal/AuthModal.tsx";
+import AuthModal from "../Modal/Modal.tsx";
 // @ts-ignore
 
 interface ChangePasswordFormProps {

@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {isAuth, username} from "../Redux/app/app-selector.ts";
 import {Profile} from "./Profile.tsx";
-import AuthModal from "../AuthModal/AuthModal.tsx";
+import AuthModal from "../Modal/Modal.tsx";
 import {useDeleteProfile, useGetProfile, useUpdateProfile} from "../hooks/profile.ts";
 import Preloader from "../common/Preloader/Preloader.tsx";
 import {useState} from "react";

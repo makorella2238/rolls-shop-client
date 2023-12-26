@@ -1,6 +1,6 @@
 import {ICartItem, IMenuItem} from "../../../types.ts";
 import {useState} from "react";
-import AuthModal from "../AuthModal/AuthModal.tsx";
+import AuthModal from "../Modal/Modal.tsx";
 // @ts-ignore
 import s from './MenuOneElement.module.css';
 // @ts-ignore

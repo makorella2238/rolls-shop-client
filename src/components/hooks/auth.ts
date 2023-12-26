@@ -8,19 +8,19 @@ export interface IChangePassword {
     newPassword: string
 }
 
-export const useRegistration = (setError: React.Dispatch<React.SetStateAction<string>>) => {
+export const useRegistration = (setError: React.Dispatch<React.SetStateAction<string>>, setIsRegistered: React.Dispatch<React.SetStateAction<boolean>>) => {
     const navigate = useNavigate()
     const registration = useMutation(auth_request.registration, {
         onSuccess: () => {
+            setIsRegistered(true)
             navigate('/login')
         },
-        onError: (error: any) => {
-            debugger
+        onError: (error: never) => {
             setError(
                 error.response.data.message
                     ? error.response.data.message
                     : error.response.data.errors.length > 1
-                        ? error.response.data.errors.map((err: any) => {
+                        ? error.response.data.errors.map((err: never) => {
                             return ({
                                 message: err.msg,
                                 field: err.path

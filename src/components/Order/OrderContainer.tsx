@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import Preloader from "../common/Preloader/Preloader.tsx";
 import {isAuth} from "../Redux/app/app-selector.ts";
-import AuthModal from "../AuthModal/AuthModal.tsx";
+import AuthModal from "../Modal/Modal.tsx";
 import {useGetOrderItems} from "../hooks/order.ts";
 import Order from "./Order.tsx";
 
@@ -29,7 +29,7 @@ const OrderContainer = ({isAuth}: OrderContainerProps) => {
     return <Order orderItems={ data } isLoading={ isLoading }/>
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: never) => {
     return {
         isAuth: isAuth(state),
     }

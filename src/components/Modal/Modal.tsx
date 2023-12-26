@@ -1,5 +1,5 @@
 // @ts-ignore
-import s from './AuthModal.module.css'
+import s from './Modal.module.css'
 import {Link} from "react-router-dom";
 // @ts-ignore
 import success_update from "../../../public/Icon/success_update.png";
@@ -14,11 +14,12 @@ interface AuthModalProps {
     setUpdateProfileLoading?: React.Dispatch<React.SetStateAction<boolean>>
     setIsChangePasswordModal?:React.Dispatch<React.SetStateAction<boolean>>
     setSuccessCreateOrder?:React.Dispatch<React.SetStateAction<boolean>>
+    setIsRegistered?:React.Dispatch<React.SetStateAction<boolean>>
     operationFailed?: boolean
     setProfileFormErr?: React.Dispatch<React.SetStateAction<string>>
 }
 
-function AuthModal({description, title, successfulOperation, setUpdateProfileLoading, setIsChangePasswordModal, setSuccessCreateOrder, setProfileFormErr, operationFailed}: AuthModalProps) {
+function Modal({description, title, successfulOperation, setUpdateProfileLoading, setIsChangePasswordModal, setSuccessCreateOrder, setProfileFormErr, operationFailed, setIsRegistered}: AuthModalProps) {
 
     const handleClickOK = () => {
         if (setUpdateProfileLoading) {
@@ -30,6 +31,9 @@ function AuthModal({description, title, successfulOperation, setUpdateProfileLoa
         if (setSuccessCreateOrder) {
             setSuccessCreateOrder(false)
         }
+        if (setIsRegistered) {
+            setIsRegistered(false)
+        }
         if (setProfileFormErr) {
             setProfileFormErr('')
         }
@@ -40,7 +44,7 @@ function AuthModal({description, title, successfulOperation, setUpdateProfileLoa
             <div className={ s.ModalContent }>
                 <div className={ s.ModalHeader }>
                     <h3 className={title ? `${s.title} ${s.titleWithClass}` : s.title }>{ title ? title : "Авторизация необходима" }</h3>
-                    { successfulOperation && <img className={ s.success_img } src={ success_update } alt="success_update"/> }
+                    { successfulOperation && <img className={ s.success_img } src={ success_update } alt="success"/> }
                     { operationFailed && <div className={s.failedContainer}><img className={ s.failed_update } src={ failed_update } alt="failed_update"/></div>}
                 </div>
 
@@ -70,4 +74,4 @@ function AuthModal({description, title, successfulOperation, setUpdateProfileLoa
     );
 }
 
-export default AuthModal;
+export default Modal;

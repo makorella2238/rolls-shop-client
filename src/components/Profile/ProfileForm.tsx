@@ -2,7 +2,7 @@ import {useForm} from "react-hook-form";
 // @ts-ignore
 import s from './Profile.module.css';
 import {IProfile} from "../hooks/profile";
-import AuthModal from "../AuthModal/AuthModal";
+import AuthModal from "../Modal/Modal";
 import React from "react";
 
 interface fields {

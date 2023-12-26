@@ -6,7 +6,7 @@ import back from '../../../assets/back.png'
 import cart from '../../../../public/Icon/cart-icon.png'
 import React, {useState} from "react";
 import {ICartItem, IMenuItem} from "../../../../types.ts";
-import AuthModal from "../../AuthModal/AuthModal.tsx";
+import AuthModal from "../../Modal/Modal.tsx";
 import {Link} from "react-router-dom";
 
 interface BaseComponentItemProps {

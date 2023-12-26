@@ -5,11 +5,12 @@ import {useRegistration} from "../hooks/auth.ts";
 
 function RegistrationAPIContainer() {
     const [error, setError] = useState('');
-    const {handleRegistration} = useRegistration(setError)
+    const [isRegistered, setIsRegistered] = useState(false);
+    const {handleRegistration} = useRegistration(setError, setIsRegistered)
 
     return (
         <>
-            <Registration handleRegistration={handleRegistration} error={error}/>
+            <Registration handleRegistration={handleRegistration} error={error} isRegistered={isRegistered} setIsRegistered={setIsRegistered}/>
         </>
     )
 }

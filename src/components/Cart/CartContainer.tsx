@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import Preloader from "../common/Preloader/Preloader.tsx";
 import Cart from "./Cart.tsx";
 import {isAuth} from "../Redux/app/app-selector.ts";
-import AuthModal from "../AuthModal/AuthModal.tsx";
+import AuthModal from "../Modal/Modal.tsx";
 import {useState} from "react";
 import {useDeleteAllCartItems, useDeleteCartItem, useGetCartItems} from "../hooks/cart.ts";
 import {useGetProfile} from "../hooks/profile.ts";

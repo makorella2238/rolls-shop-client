@@ -9,7 +9,7 @@ import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import Counter from "../common/Counter/Counter";
 import React, {useState} from "react";
-import AuthModal from "../AuthModal/AuthModal";
+import AuthModal from "../Modal/Modal";
 import {IProfile} from "../hooks/profile";
 import {IOrder} from "../hooks/order";
 import Preloader from "../common/Preloader/Preloader";

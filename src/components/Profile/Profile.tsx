@@ -8,7 +8,7 @@ import Preloader from "../common/Preloader/Preloader.tsx";
 // @ts-ignore
 import historyIcon from '../../../public/Icon/history-icon.png'
 import {Link} from "react-router-dom";
-import AuthModal from "../AuthModal/AuthModal.tsx";
+import AuthModal from "../Modal/Modal.tsx";
 import React from "react";
 
 interface ProfileProps {
